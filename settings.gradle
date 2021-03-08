@@ -1,2 +1,3 @@
 rootProject.name='interview'
 include ':app'
+include ':thirdparty'

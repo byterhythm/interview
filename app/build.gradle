@@ -14,12 +14,30 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    flavorDimensions("google")
+    flavorDimensions("baidu")
+
+    productFlavors {
+        google {
+            manifestPlaceholders.put("CHANNEL", "google")
+        }
+        baidu {
+            manifestPlaceholders.put("CHANNEL", "baidu")
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+//    signingConfigs{
+//        release{
+//            storeFile file('')
+//        }
+//    }
 
 }
 
