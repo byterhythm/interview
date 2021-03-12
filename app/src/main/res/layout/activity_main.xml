@@ -9,7 +9,7 @@
         tools:context=".MainActivity">
 
     <TextView
-            android:id="@+id/tv_view"
+            android:id="@+id/tv_channel"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:text="Hello World!"
@@ -22,10 +22,23 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
     <Button
+            android:id="@+id/btn_fixed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="修复"
+            android:onClick="fixed"/>
+
+    <Button
+            android:id="@+id/btn_toast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="吐司"
+            android:onClick="showToast"/>
+
+    <Button
             android:layout_width="100dp" android:layout_height="50dp"
             android:text="move"
             android:onClick="move"
     />
-
 
 </LinearLayout>
