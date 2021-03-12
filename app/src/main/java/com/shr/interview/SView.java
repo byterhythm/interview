@@ -34,35 +34,30 @@ public class SView extends View {
     private float mLastX, mLastY;
     Scroller scroller;
 
+    private int mWidth = 100;
+    private int mHeight = 100;
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        if (MeasureSpec.AT_MOST == widthMode && heightMode == MeasureSpec.AT_MOST) {
+            setMeasuredDimension(mWidth, mHeight);
+        } else if (MeasureSpec.AT_MOST == widthMode) {
+            setMeasuredDimension(mWidth, MeasureSpec.getSize(heightMeasureSpec));
+        } else if (MeasureSpec.AT_MOST == heightMode) {
+            setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec), mHeight);
+        }
+
+    }
 
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setColor(Color.parseColor("#ff00ff"));
-        canvas.drawRect(new Rect(0, 0, 100, 100), paint);
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        float x = event.getX();
-        float y = event.getY();
-        int action = event.getAction();
-        switch (action) {
-            case MotionEvent.ACTION_DOWN:
-                break;
-            case MotionEvent.ACTION_MOVE:
-                int dex = (int) (mLastX - x);
-                int dey = (int) (mLastY - y);
-                Log.i("shr", "dex=" + dex + ";dey=" + dey);
-                smartScrollTo(dex, dey);
-                break;
-            case MotionEvent.ACTION_UP:
-                mLastX = x;
-                mLastY = y;
-                break;
-        }
-        return true;
+        canvas.drawRect(new Rect(0, 0, getWidth(), getHeight()), paint);
     }
 
     public void smartScrollTo(int dx, int dy) {

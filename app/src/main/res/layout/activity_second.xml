@@ -8,6 +8,10 @@
         android:orientation="vertical"
         tools:context=".SecondActivity">
 
+    <com.shr.interview.SView
+            android:layout_width="50dp"
+            android:layout_height="100dp"/>
+
     <Button android:layout_width="150dp" android:layout_height="50dp"
             android:text="跨进程通信" android:onClick="sendMsg"/>
 
