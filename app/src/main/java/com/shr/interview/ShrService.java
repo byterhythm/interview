@@ -19,6 +19,7 @@ public class ShrService extends IntentService {
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
         Log.i("shr", "值：" + Thread.currentThread().getId());
+        Log.i("shr", "intent data：" + intent.getStringExtra("url"));
         //模拟下载
         int progress = 0;
         try {

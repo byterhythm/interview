@@ -41,4 +41,16 @@
             android:onClick="move"
     />
 
+    <Button
+            android:layout_width="100dp" android:layout_height="50dp"
+            android:text="startService"
+            android:onClick="startService"
+    />
+
+    <Button
+            android:layout_width="100dp" android:layout_height="50dp"
+            android:text="bindService"
+            android:onClick="bindService"
+    />
+
 </LinearLayout>

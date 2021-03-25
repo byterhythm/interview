@@ -33,6 +33,7 @@ public class BookManagerService extends Service {
         books.add(new Book("suan fa"));
     }
 
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {

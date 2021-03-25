@@ -13,9 +13,25 @@
             android:layout_height="100dp"/>
 
     <Button android:layout_width="150dp" android:layout_height="50dp"
-            android:text="跨进程通信" android:onClick="sendMsg"/>
+            android:text="SendMsg" android:onClick="sendMsg"/>
 
     <Button android:layout_width="150dp" android:layout_height="50dp"
-            android:text="跨进程通信" android:onClick="handlerThread"/>
+            android:text="handlerThread" android:onClick="handlerThread"/>
+
+    <Button android:layout_width="150dp" android:layout_height="50dp"
+            android:text="AsyncTask" android:onClick="AsyncTask"/>
+
+    <TextView
+            android:id="@+id/tv_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:layout_margin="20dp"
+            android:text="0"
+    />
+
+    <Button android:layout_width="150dp" android:layout_height="50dp"
+            android:text="CancelAsyncTask" android:onClick="CancelAsyncTask"/>
 
 </LinearLayout>

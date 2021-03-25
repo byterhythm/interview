@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.*;
 import android.os.storage.StorageManager;
 import android.util.Log;
@@ -51,6 +53,28 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+
+    public void startService(View view) {
+        Intent intent = new Intent(this,TestService.class);
+        startService(intent);
+    }
+
+   ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+
+        }
+    };
+
+    public void bindService(View view) {
+        Intent intent = new Intent(this,TestService.class);
+        bindService(intent,connection ,BIND_AUTO_CREATE);
+    }
 
     private static class  ClientHandler extends Handler{
         @Override
@@ -127,9 +151,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void fixed(View view) {
         //热补丁修复
-//        FixDexUtils.loadFixedDex(this, Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS));
-//        downloadManager.download("xxx");
-//        downloadManager.download("xxx");
+        FixDexUtils.loadFixedDex(this, Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS));
+        downloadManager.download("xxx");
+        downloadManager.download("xxx");
         startActivity(new Intent(this, SecondActivity.class));
     }
 
@@ -147,6 +171,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         unbindService(serviceConnection);
+        unbindService(connection);
         super.onDestroy();
     }
 }
